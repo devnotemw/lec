@@ -13,6 +13,10 @@ app.set("view engine", "ejs")
 const home = require("./src/routes/home")
 // 현재 폴더 - routes - home 에 있는 javascript 파일을 읽어오도록 요청한다. 여기서는 index.js
 // Router 를 불러오기 위해서 경로를 입력해주어야 하는데, 이때 상대경로를 입력한다.
+
+app.use(express.static(`${__dirname}/src/public`))
+// ejs 파일과 js 폴더를 연결하는 미들웨어 설정1. 현재 파일(app.js)의 위치를 가져와서, 그 안에 있는 src/public 폴더를 정적 경로에 추가한다.
+
 app.use("/", home);
 // app.use() 는 미들웨어를 등록하는 메써드
 
