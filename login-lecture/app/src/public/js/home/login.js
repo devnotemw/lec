@@ -22,8 +22,18 @@ function login(){
         psword: psword.value,
     };
 
-    console.log(req);
+    fetch("/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(req)
+    })
 };
-// 요청 데이터이므로 req 변수에 담아준다.
-// object 선언
-
+// 요청 데이터이므로 req 변수에 담아준다. *object로 선언
+// fetch를 통해 데이터(전달할 데이터: req)를 전달할 수 있다.
+// 서버와 클라이언트가 데이터를 주고받을 경로를 설정해주어야 한다.
+// 해당 경로에는 API 가 이미 만들어져있어야 하지만, 강의에서는 API가 미리 만들어졌다는 가정하에 데이터 전달하는 과정을 먼저 실습한다.
+// object 형: 키-값의 형태로 저장, JSON 형식: 키-값을 문자열의 형태로 저장
+// POST method로 데이터 전달, 데이터 형태가 JSON임을 headers를 통해 명시함.
+// 이러한 형태를 갖추면 서버로 데이터 전달이 가능하고, 서버에서 이 데이터를 받으려면 해당 경로("/login")과 메써드(POST)에 맞는 API가 마련되어 있어야 한다.
