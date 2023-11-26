@@ -30,9 +30,16 @@ function login() {
         body: JSON.stringify(req),
     })
         .then((res) => res.json())
-        .then(console.log);
-        //.then((res) => console.log(res));
-        // 위의 구문은 같은 의미이다. 파라미터를 함수 안에 넘겨줄 때는 생략할 수 있다.
+        .then((res) => {
+            if (res.success) {
+                location.href = "/";
+            } else {
+                alert(res.msg);
+            }
+        })
+        .catch((err) => {
+            console.error("로그인 중 에러 발생");
+        });
 };
 // 요청 데이터이므로 req 변수에 담아준다. *object로 선언
 // fetch를 통해 데이터(전달할 데이터: req)를 전달할 수 있다.
