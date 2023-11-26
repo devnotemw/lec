@@ -29,6 +29,10 @@ function login() {
         },
         body: JSON.stringify(req),
     })
+        .then((res) => res.json())
+        .then(console.log);
+        //.then((res) => console.log(res));
+        // 위의 구문은 같은 의미이다. 파라미터를 함수 안에 넘겨줄 때는 생략할 수 있다.
 };
 // 요청 데이터이므로 req 변수에 담아준다. *object로 선언
 // fetch를 통해 데이터(전달할 데이터: req)를 전달할 수 있다.
@@ -37,3 +41,5 @@ function login() {
 // object 형: 키-값의 형태로 저장, JSON 형식: 키-값을 문자열의 형태로 저장
 // POST method로 데이터 전달, 데이터 형태가 JSON임을 headers를 통해 명시함. body로 데이터를 전달함.
 // 이러한 형태를 갖추면 서버로 데이터 전달이 가능하고, 서버에서 이 데이터를 받으려면 해당 경로("/login")과 메써드(POST)에 맞는 API가 마련되어 있어야 한다.
+// fetch로 데이터 전달 이후, 서버로부터 다시 데이터를 받으려면 .then() 구문 사용
+// res.json()의 반환 값은 Promise 이다. Promise 를 받기 위해서는 .then() 구문 사용해야 함
